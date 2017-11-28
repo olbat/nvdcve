@@ -1,0 +1,18 @@
+---
+language: ruby
+
+jobs:
+  include:
+  - stage: test
+    script: scripts/fetch-and-update nvdcve
+  - stage: deploy
+    script: scripts/fetch-and-update nvdcve && scripts/sync-git nvdcve
+    deploy:
+      provider: pages
+      skip_cleanup: true
+      github_token: $GITHUB_TOKEN
+      target_branch: gh-pages
+      fqdn: olbat.net
+      local_dir: nvdcve
+      on:
+        branch: master
