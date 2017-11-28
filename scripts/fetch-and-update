@@ -1,0 +1,32 @@
+#!/bin/bash
+
+CVE_BASE_URL="https://static.nvd.nist.gov/feeds/json/cve/1.0"
+CURDIR=$(dirname `type -p $0`)
+
+function fetch_and_update {
+	meta_file_url="${CVE_BASE_URL}/nvdcve-1.0-${1}.meta"
+	json_file_url="${CVE_BASE_URL}/nvdcve-1.0-${1}.json.gz"
+
+	cve_file=$(mktemp)
+	trap "rm -f $cve_file" EXIT
+
+	checksum=$(curl -sf $meta_file_url | sed -n 's/^sha256://p' | tr -d '\r')
+	curl -sf $json_file_url | gzip -cd > $cve_file
+	sha256sum -c <<< "$checksum $cve_file"
+	$CURDIR/create-json-files $2 < $cve_file
+
+	rm $cve_file
+}
+
+set -e
+set -o pipefail
+set -x
+
+[ $# -gt 0 ] && outdir=$1 || outdir=$PWD
+
+for year in $(seq 2002 `date +%Y`)
+do
+	fetch_and_update $year $outdir
+done
+
+fetch_and_update "modified" $outdir
