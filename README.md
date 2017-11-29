@@ -35,9 +35,9 @@ It is a superset of the CVE® dictionary augmented with additional analysis, a d
 Usage restrictions of this resource are described in the NVD's [FAQ](https://nvd.nist.gov/general/faq#1f2488ea-0492-45a7-ae5b-ad29bc31dd05):
 ```
 All NVD data is freely available from our XML Data Feeds. There are no fees,
-licensing restrictions, or even a requirement to register. All NIST publications
-are available in the public domain according to Title 17 of the United States
-Code. Acknowledgment of the NVD  when using our information is appreciated.
-In addition, please email nvd@nist.gov to let us know how the information is
-being used.
+licensing restrictions, or even a requirement to register. All NIST
+publications are available in the public domain according to Title 17 of the
+United States Code. Acknowledgment of the NVD  when using our information is
+appreciated. In addition, please email nvd@nist.gov to let us know how the
+information is being used.
 ```

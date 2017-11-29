@@ -2,6 +2,7 @@
 
 CVE_BASE_URL="https://static.nvd.nist.gov/feeds/json/cve/1.0"
 CURDIR=$(dirname `type -p $0`)
+LICENSE_FILE=$CURDIR/../LICENSE
 
 function fetch_and_update {
 	meta_file_url="${CVE_BASE_URL}/nvdcve-1.0-${1}.meta"
@@ -22,7 +23,7 @@ set -e
 set -o pipefail
 set -x
 
-[ $# -gt 0 ] && outdir=$1 || outdir=$PWD
+[ $# -gt 0 ] && outdir=$1 || outdir=nvdcve
 
 for year in $(seq 2002 `date +%Y`)
 do
@@ -30,3 +31,5 @@ do
 done
 
 fetch_and_update "modified" $outdir
+
+cp $LICENSE_FILE $outdir
