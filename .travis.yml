@@ -12,7 +12,6 @@ jobs:
       skip_cleanup: true
       github_token: $GITHUB_TOKEN
       target_branch: gh-pages
-      fqdn: olbat.net
-      local_dir: nvdcve
+      local_dir: nvdcve/
       on:
         branch: master
