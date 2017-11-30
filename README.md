@@ -8,7 +8,7 @@ It has two main goals:
 - allow to easilly get the description of a vulnerability in the JSON format ([schema](https://scap.nist.gov/schema/nvd/feed/0.1/nvd_cve_feed_json_0.1_beta.schema))
 - allow to explore CVE®/NVD modification history using git
 
-The JSON files from this repository are generated and update daily using the [NVD's JSON feeds](https://nvd.nist.gov/vuln/data-feeds).
+The JSON files in this repository are generated and updated daily using the [NVD's JSON feeds](https://nvd.nist.gov/vuln/data-feeds) and [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).
 
 __Data access__: JSON files can also be fetched at [https://olbat.github.io/nvdcve/CVE-YYYY-NNN.json](https://olbat.github.io/nvdcve/CVE-YYYY-NNN.json).
 
@@ -17,7 +17,7 @@ __Data access__: JSON files can also be fetched at [https://olbat.github.io/nvdc
 ### Common Vulnerabilities and Exposures (CVE®)
 The [CVE®](https://cve.mitre.org/) is maintained by the Mitre Corporation.
 
-The usage of this resource -as well as the JSON files in this repository- is restricted and described in Mitre CVE®'s [Terms of use](https://cve.mitre.org/about/termsofuse.html):
+The usage of this resource -as well as the JSON files in this repository- is restricted and explained in Mitre CVE®'s [Terms of use](https://cve.mitre.org/about/termsofuse.html):
 ```
 CVE Usage: MITRE hereby grants you a perpetual, worldwide, non-exclusive,
 no-charge, royalty-free, irrevocable copyright license to reproduce, prepare
