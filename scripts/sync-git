@@ -8,15 +8,11 @@ set -x
 
 dir=${1:-nvdcve}
 
-# if there is some changes in the repository: commit, tag and push them
+# if there is some changes in the repository: commit and push them
 git add -N $dir
 if ! git diff --exit-code $dir > /dev/null
 then
 	git commit -am "Automatic update"
-	tag=$(date +%Y-%m-%d)
-	git tag $tag
-
 	git remote set-url origin $GIT_REMOTE
 	git push origin HEAD:$GIT_BRANCH
-	git push origin tag $tag
 fi
