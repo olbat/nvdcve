@@ -1,5 +1,5 @@
 # NVD/CVE® as JSON files
-
+__Important__: this repository is now partially redundant with the [CVEProject/cvelist](https://github.com/CVEProject/cvelist) project that allows to explore the CVE®/NVD modification history using git as well as submitting new vulnerabilities using GitHub pull requests. However, this project is still synchronized with the dictionaries to allow to fetch each vulnerability in JSON format.
 
 ## About
 This repository contains JSON files describing vulnerabilities from the [NVD](https://nvd.nist.gov/general/faq) and [CVE®](https://cve.mitre.org/about/faqs.html) dictionaries.
