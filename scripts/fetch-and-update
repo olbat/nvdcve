@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CVE_BASE_URL="https://static.nvd.nist.gov/feeds/json/cve/1.0"
+CVE_BASE_URL="https://nvd.nist.gov/feeds/json/cve/1.0"
 CURDIR=$(dirname `type -p $0`)
 LICENSE_FILE=$CURDIR/../LICENSE
 
@@ -11,8 +11,8 @@ function fetch_and_update {
 	cve_file=$(mktemp)
 	trap "rm -f $cve_file" EXIT
 
-	checksum=$(curl -sf $meta_file_url | sed -n 's/^sha256://p' | tr -d '\r')
-	curl -sf $json_file_url | gzip -cd > $cve_file
+	checksum=$(curl -sLf $meta_file_url | sed -n 's/^sha256://p' | tr -d '\r')
+	curl -sLf $json_file_url | gzip -cd > $cve_file
 	sha256sum -c <<< "$checksum $cve_file"
 	$CURDIR/create-json-files $2 < $cve_file
 
