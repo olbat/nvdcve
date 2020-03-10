@@ -5,7 +5,7 @@ __Important__: this repository is now partially redundant with the [CVEProject/c
 This repository contains JSON files describing vulnerabilities from the [NVD](https://nvd.nist.gov/general/faq) and [CVE®](https://cve.mitre.org/about/faqs.html) dictionaries.
 
 It has two main goals:
-- allow to easilly get the description of a vulnerability in the JSON format ([schema](https://scap.nist.gov/schema/nvd/feed/0.1/nvd_cve_feed_json_0.1_beta.schema))
+- allow to easilly get the description of a vulnerability in the JSON format ([schema](https://csrc.nist.gov/schema/nvd/feed/1.1-Beta/nvd_cve_feed_json_1.1_beta.schema))
 - allow to explore CVE®/NVD modification history using git
 
 The JSON files in this repository are generated and updated daily using the [NVD's JSON feeds](https://nvd.nist.gov/vuln/data-feeds) and [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).
