@@ -4,7 +4,9 @@ language: ruby
 jobs:
   include:
   - stage: test
-    script: scripts/fetch-and-update nvdcve
+    script:
+    - bash -n scripts/fetch-and-update scripts/sync-git
+    - ruby -c scripts/create-json-files
   - stage: deploy
     script: scripts/fetch-and-update nvdcve && scripts/sync-git nvdcve
     deploy:
