@@ -9,6 +9,9 @@ jobs:
     - ruby -c scripts/create-json-files
   - stage: deploy
     script: scripts/fetch-and-update nvdcve && scripts/sync-git nvdcve
+    branches:
+      only:
+      - master
     deploy:
       provider: pages
       skip_cleanup: true
