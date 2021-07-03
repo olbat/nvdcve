@@ -1,12 +1,15 @@
 #!/bin/bash
 
+set -euxo pipefail
+
 CVE_BASE_URL="https://nvd.nist.gov/feeds/json/cve/1.1"
+
 CURDIR=$(dirname `type -p $0`)
 LICENSE_FILE=$CURDIR/../LICENSE
 
 function fetch_and_update {
-	meta_file_url="${CVE_BASE_URL}/nvdcve-1.1-${1}.meta"
-	json_file_url="${CVE_BASE_URL}/nvdcve-1.1-${1}.json.gz"
+	meta_file_url="${CVE_BASE_URL}/nvdcve-1.1-${2}.meta"
+	json_file_url="${CVE_BASE_URL}/nvdcve-1.1-${2}.json.gz"
 
 	cve_file=$(mktemp)
 	trap "rm -f $cve_file" INT TERM EXIT
@@ -14,22 +17,17 @@ function fetch_and_update {
 	checksum=$(curl -sLf $meta_file_url | sed -n 's/^sha256://p' | tr -d '\r')
 	curl -sLf $json_file_url | gzip -cd > $cve_file
 	sha256sum -c <<< "$checksum $cve_file"
-	$CURDIR/create-json-files $2 < $cve_file
+	$CURDIR/create-json-files $1 < $cve_file
 
 	rm $cve_file
 }
 
-set -e
-set -o pipefail
-set -x
-
 [ $# -gt 0 ] && outdir=$1 || outdir=nvdcve
 
-for year in $(seq 2002 `date +%Y`)
-do
-	fetch_and_update $year $outdir
-done
+export -f fetch_and_update
+export CURDIR CVE_BASE_URL
+seq 2002 `date +%Y` | xargs -n1 -P10 -I% -t bash -c "fetch_and_update $outdir %"
 
-fetch_and_update "modified" $outdir
+fetch_and_update $outdir "modified"
 
 cp $LICENSE_FILE $outdir
