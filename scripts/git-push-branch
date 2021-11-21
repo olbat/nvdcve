@@ -6,7 +6,8 @@ GIT_REMOTES="https://${GITHUB_TOKEN}@github.com/olbat/nvdcve,https://${GITLAB_US
 
 git_refspec=$1
 shift
-shift
+
+shift || true  # -- if any
 git_args=$@
 
 for git_remote in ${GIT_REMOTES//,/ }

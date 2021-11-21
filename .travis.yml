@@ -5,5 +5,8 @@ jobs:
   include:
   - stage: test
     script:
-    - bash -n scripts/fetch-and-update scripts/sync-git
+    - bash -n scripts/fetch-and-update \
+        scripts/git-commit-changes \
+        scripts/generate-pages-git-branch \
+        scripts/git-push-branch
     - ruby -c scripts/create-json-files
