@@ -12,11 +12,3 @@ jobs:
     branches:
       only:
       - master
-    deploy:
-      provider: pages
-      skip_cleanup: true
-      github_token: $GITHUB_TOKEN
-      target_branch: gh-pages
-      local_dir: nvdcve/
-      on:
-        branch: master
