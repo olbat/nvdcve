@@ -5,8 +5,6 @@ test:
   script:
     - bash -n scripts/fetch-and-update scripts/sync-git
     - ruby -c scripts/create-json-files
-  only:
-    - merge_requests
 
 deploy:
   stage: deploy

@@ -13,8 +13,8 @@ if ! git diff --exit-code $dir > /dev/null
 then
 	git commit -am "Automatic update"
 
-	for $git_remote in ${GIT_REMOTES//,/ }
+	for git_remote in ${GIT_REMOTES//,/ }
 	do
-		git push $GIT_REMOTE HEAD
+		git push $git_remote HEAD
 	done
 fi
