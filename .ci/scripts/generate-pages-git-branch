@@ -10,4 +10,4 @@ target_branch=${3:-pages}
 
 git checkout --orphan $target_branch
 git read-tree $(git rev-parse $base_branch:$dir)
-git commit -m "Generate $target_branch branch from $dir directory on $base_branch branch"
+git commit -qm "Generate $target_branch branch from $dir directory on $base_branch branch"
