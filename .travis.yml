@@ -7,8 +7,3 @@ jobs:
     script:
     - bash -n scripts/fetch-and-update scripts/sync-git
     - ruby -c scripts/create-json-files
-  - stage: deploy
-    script: scripts/fetch-and-update nvdcve && scripts/sync-git nvdcve
-    branches:
-      only:
-      - master

@@ -1,0 +1,21 @@
+---
+test:
+  stage: test
+  image: ruby:3
+  script:
+    - bash -n scripts/fetch-and-update scripts/sync-git
+    - ruby -c scripts/create-json-files
+  only:
+    - merge_requests
+
+deploy:
+  stage: deploy
+  image: ruby:3
+  before_script:
+    - git config user.name "GitLab CI Runner"
+    - git config user.email "gitlab@example.com"
+  script:
+    - scripts/fetch-and-update nvdcve
+    - scripts/sync-git nvdcve
+  only:
+    - master
