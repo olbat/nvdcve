@@ -4,9 +4,9 @@ test:
   image: ruby:3
   script:
     - bash -n scripts/fetch-and-update \
-        scripts/git-commit-changes \
-        scripts/generate-pages-git-branch \
-        scripts/git-push-branch
+        .ci/scripts/git-commit-changes \
+        .ci/scripts/generate-pages-git-branch \
+        .ci/scripts/git-push-branch
     - ruby -c scripts/create-json-files
 
 deploy:
@@ -23,11 +23,11 @@ deploy:
     - scripts/fetch-and-update $NVDCVE_DIR
 
     # commit & push changes in git history
-    - scripts/git-commit-changes $NVDCVE_DIR
-    - scripts/git-push-branch HEAD
+    - .ci/scripts/git-commit-changes $NVDCVE_DIR
+    - .ci/scripts/git-push-branch HEAD
 
     # generate & push pages branch
-    - scripts/generate-pages-git-branch $PAGES_BRANCH
-    - scripts/git-push-branch $PAGES_BRANCH -- -f
+    - .ci/scripts/generate-pages-git-branch $PAGES_BRANCH
+    - .ci/scripts/git-push-branch $PAGES_BRANCH -- -f
   only:
     - master
