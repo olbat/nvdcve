@@ -31,4 +31,5 @@ deploy:
     - .ci/scripts/generate-pages-git-branch $PAGES_BRANCH
     - .ci/scripts/git-push-branch $PAGES_BRANCH -- -f
   only:
-    - master
+    - web
+    - schedules
