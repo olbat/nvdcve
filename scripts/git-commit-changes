@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+dir=${1:-nvdcve}
+
+# if there are some changes in the repository: commit and push them
+git add -N $dir
+if ! git diff --exit-code $dir > /dev/null
+then
+	git commit -am "Automatic update"
+fi
