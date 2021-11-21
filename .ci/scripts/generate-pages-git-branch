@@ -7,6 +7,6 @@ MAIN_BRANCH=${MAIN_BRANCH:-master}
 dir=${1:-nvdcve}
 branch=${2:-pages}
 
-git checkout --orphan $banch
+git checkout --orphan $branch
 git read-tree $(git rev-parse $MAIN_BRANCH:$dir)
 git commit -m "Generate $branch branch from $dir directory"

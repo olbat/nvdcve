@@ -4,7 +4,7 @@ set -euxo pipefail
 
 GIT_REMOTES="https://${GITHUB_TOKEN}@github.com/olbat/nvdcve,https://${GITLAB_USER}:${GITLAB_TOKEN}@gitlab.com/olbat/nvdcve.git"
 
-git_refspec=$1
+git_branch=$1
 shift
 
 shift || true  # -- if any
@@ -12,5 +12,5 @@ git_args=$@
 
 for git_remote in ${GIT_REMOTES//,/ }
 do
-	git push $git_args $git_remote $git_refspec
+	git push $git_args $git_remote HEAD:$git_branch
 done

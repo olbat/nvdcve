@@ -14,6 +14,7 @@ deploy:
   image: ruby:3
   variables:
     NVDCVE_DIR: nvdcve
+    MAIN_BRANCH: master
     PAGES_BRANCH: pages
   before_script:
     - git config user.name "GitLab CI Runner"
@@ -24,7 +25,7 @@ deploy:
 
     # commit & push changes in git history
     - .ci/scripts/git-commit-changes $NVDCVE_DIR
-    - .ci/scripts/git-push-branch HEAD
+    - .ci/scripts/git-push-branch $MAIN_BRANCH
 
     # generate & push pages branch
     - .ci/scripts/generate-pages-git-branch $PAGES_BRANCH
