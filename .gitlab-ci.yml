@@ -8,6 +8,8 @@ test:
         .ci/scripts/generate-pages-git-branch \
         .ci/scripts/git-push-branch
     - ruby -c scripts/create-json-files
+  except:
+    - master
 
 deploy:
   stage: deploy
