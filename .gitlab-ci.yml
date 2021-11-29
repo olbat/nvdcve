@@ -36,3 +36,5 @@ deploy:
   only:
     - web
     - schedules
+  timeout: 15m
+  retry: 2
