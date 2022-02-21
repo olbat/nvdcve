@@ -22,7 +22,7 @@ deploy:
     - git config user.name "GitLab CI Runner"
     - git config user.email "gitlab@example.com"
     - git checkout -b $CI_DEFAULT_BRANCH || true
-    - git pull
+    - git pull --rebase
   script:
     # update NVD/CVE files by fetching the last archieve
     - scripts/fetch-and-update $NVDCVE_DIR
