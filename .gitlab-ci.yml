@@ -18,6 +18,7 @@ deploy:
     NVDCVE_DIR: nvdcve
     MAIN_BRANCH: master
     RUNNER_SCRIPT_TIMEOUT: 30m
+  timeout: 30m
   before_script:
     - git config user.name "GitLab CI Runner"
     - git config user.email "gitlab@example.com"
