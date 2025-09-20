@@ -17,6 +17,7 @@ deploy:
   variables:
     NVDCVE_DIR: nvdcve
     MAIN_BRANCH: master
+    PAGES_BRANCH: pages
   before_script:
     - git config user.name "GitLab CI Runner"
     - git config user.email "gitlab@example.com"
