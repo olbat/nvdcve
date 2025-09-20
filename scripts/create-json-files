@@ -8,9 +8,9 @@ abort "usage: $0 [<output_dir>] < <cve_json_file> " if ARGV.size > 1
 outdir = (ARGV.empty? ? Dir.pwd : ARGV[0])
 FileUtils.mkdir_p(outdir)
 
-cves = JSON.load(STDIN.read)["CVE_Items"]
+cves = JSON.load(STDIN.read)["vulnerabilities"]
 
 cves.each do |cve|
-  id = cve["cve"]["CVE_data_meta"]["ID"]
-  File.write(File.join(outdir, "#{id}.json"), JSON.pretty_generate(cve))
+  id = cve["cve"]["id"]
+  File.write(File.join(outdir, "#{id}.json"), JSON.pretty_generate(cve["cve"]))
 end
