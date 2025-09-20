@@ -2,14 +2,15 @@
 
 set -euxo pipefail
 
-CVE_BASE_URL="https://nvd.nist.gov/feeds/json/cve/1.1"
+CVE_BASE_URL="https://nvd.nist.gov/feeds/json/cve/2.0"
 
 CURDIR=$(dirname `type -p $0`)
 LICENSE_FILE=$CURDIR/../LICENSE
 
 function fetch_and_update {
-	meta_file_url="${CVE_BASE_URL}/nvdcve-1.1-${2}.meta"
-	json_file_url="${CVE_BASE_URL}/nvdcve-1.1-${2}.json.gz"
+	meta_file_url="${CVE_BASE_URL}/nvdcve-2.0-${2}.meta"
+	json_file_url="${CVE_BASE_URL}/nvdcve-2.0-${2}.json.gz"
+
 
 	cve_file=$(mktemp)
 	trap "rm -f $cve_file" INT TERM EXIT
